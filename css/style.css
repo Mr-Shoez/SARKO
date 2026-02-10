@@ -1,0 +1,1558 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+    --royal-dark: #101918;
+    --royal-gold: #c9830a;
+    --royal-blue: #001f3f;
+    --royal-white: #dce3e8;
+    --nav-height: 90px;
+    --transition: all 0.4s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* The Background Image for the whole page (or specifically the section after hero) */
+    background: url("https://images.unsplash.com/photo-1621255474706-90a18eb7be4b?q=80&w=1935&auto=format&fit=crop")
+        no-repeat center center fixed;
+    background-size: cover;
+    background-color: var(--royal-dark); /* Fallback */
+    color: var(--royal-white);
+    font-family: "Martel", serif;
+    overflow-x: hidden;
+}
+
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+}
+
+/* Logo Image Styling */
+.logo-img {
+    height: 60px; /* Adjust based on your actual logo file */
+    width: auto;
+    object-fit: contain;
+}
+
+/* =========================================
+   2. HEADER & LAYOUT
+   ========================================= */
+.header-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--royal-dark);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(201, 131, 10, 0.2); /* Gold border */
+}
+
+.container {
+    max-width: 1300px; /* Limits width to keep things centered */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Nav Wrapper: Flexbox to space Logo and Menu */
+.nav-wrapper {
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* =========================================
+   3. LOGO STYLING
+   ========================================= */
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1002; /* Above mobile menu overlay */
+}
+
+.brand-logo i {
+    font-size: 2.5rem;
+    color: var(--royal-gold);
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-family: "Vollkorn", serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--royal-gold);
+    line-height: 1;
+}
+
+.brand-tagline {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--royal-white);
+    opacity: 0.8;
+}
+
+/* =========================================
+   4. MOBILE TOGGLE (Hamburger)
+   ========================================= */
+.mobile-toggle {
+    font-size: 2rem;
+    color: var(--royal-white);
+    display: block; /* Visible by default (Mobile) */
+    z-index: 1002;
+}
+
+.mobile-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    display: block;
+}
+
+/* =========================================
+   5. NAVIGATION LIST (Mobile First Default)
+   ========================================= */
+.nav-content {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Hidden off-screen */
+    width: 100%;
+    height: 100vh;
+    background-color: var(--royal-dark); /* Mobile bg */
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px; /* Space for close button */
+    transition: var(--transition);
+    z-index: 1001;
+    overflow-y: auto;
+}
+
+/* When Javascript adds 'active' class */
+.nav-content.active {
+    left: 0;
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.nav-item {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--royal-white);
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    color: var(--royal-gold);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* =========================================
+   6. DROPDOWNS & MEGA MENU (Mobile)
+   ========================================= */
+.dropdown-menu,
+.mega-menu {
+    display: none; /* Hidden by default on mobile */
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0;
+}
+
+/* Class added via JS to show dropdown on mobile */
+.nav-item.show-mobile .dropdown-menu,
+.nav-item.show-mobile .mega-menu {
+    display: block;
+    animation: fadeIn 0.3s;
+}
+
+.dropdown-menu li a,
+.mega-menu a {
+    display: block;
+    padding: 15px 40px;
+    font-size: 0.95rem;
+    color: #bbb;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.mega-column h3 {
+    padding: 20px 40px 5px 40px;
+    color: var(--royal-gold);
+    font-family: "Comfortaa", sans-serif;
+    font-size: 1rem;
+}
+
+.mega-image-box {
+    display: none;
+} /* Hide image on mobile */
+
+/* =========================================
+   7. DESKTOP STYLES (Min-width: 992px)
+   ========================================= */
+@media screen and (min-width: 992px) {
+    /* Layout Reset */
+    .mobile-toggle,
+    .mobile-close {
+        display: none;
+    }
+
+    .nav-content {
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        padding: 0;
+        overflow: visible;
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        gap: 5px; /* Spacing between top links */
+        align-items: center;
+    }
+
+    .nav-item {
+        width: auto;
+        border: none;
+        position: relative; /* Anchor for dropdowns */
+        height: var(--nav-height);
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-link {
+        padding: 0 15px;
+        font-size: 1rem;
+        height: 100%; /* Fill height for hover area */
+    }
+
+    /* Chevron Rotation on Hover */
+    .nav-item:hover .bx-chevron-down {
+        transform: rotate(180deg);
+        transition: transform 0.3s;
+    }
+
+    /* --- Desktop Dropdown --- */
+    .dropdown-menu {
+        display: block; /* Layout is block, but hidden by visibility */
+        position: absolute;
+        top: 100%; /* Push below header */
+        left: 0;
+        width: 240px;
+        background: var(--royal-dark);
+        border-top: 3px solid var(--royal-gold);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+        /* Hiding Logic */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: var(--transition);
+    }
+
+    .nav-item:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .dropdown-menu li a {
+        padding: 12px 20px;
+        color: var(--royal-white);
+    }
+
+    .dropdown-menu li a:hover {
+        background: var(--royal-blue);
+        color: var(--royal-gold);
+        padding-left: 25px; /* Slide effect */
+    }
+
+    /* --- Desktop Mega Menu --- */
+    .mega-menu {
+        display: block;
+        position: fixed; /* Fixed relative to screen width */
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        background: var(--royal-dark);
+        border-top: 3px solid var(--royal-gold);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        z-index: 999;
+
+        /* Hiding Logic */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: var(--transition);
+    }
+
+    .nav-item:hover .mega-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .mega-content {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .mega-column {
+        width: 23%; /* 4 columns */
+    }
+
+    .mega-column h3 {
+        padding: 0 0 15px 0;
+        border-bottom: 1px solid rgba(201, 131, 10, 0.3);
+        margin-bottom: 15px;
+    }
+
+    .mega-menu a {
+        padding: 8px 0;
+        border: none;
+        color: #aaa;
+        transition: 0.2s;
+    }
+
+    .mega-menu a:hover {
+        color: var(--royal-white);
+        transform: translateX(5px);
+    }
+
+    /* Mega Menu Featured Image */
+    .mega-image-box {
+        display: flex;
+        height: 150px;
+        background: var(--royal-blue);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+        border-radius: 4px;
+    }
+
+    .mega-image-box i {
+        font-size: 4rem;
+        color: var(--royal-gold);
+        opacity: 0.5;
+    }
+
+    .featured-col p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #bbb;
+    }
+}
+
+/* =========================================
+   3. HERO SECTION
+   ========================================= */
+.hero-section {
+    position: relative;
+    min-height: 100vh; /* Full viewport height */
+    padding-top: var(--nav-height); /* Clear the fixed nav */
+    display: flex;
+    align-items: center;
+    background-color: var(--royal-dark); /* Solid color base */
+    overflow: hidden;
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column-reverse; /* Mobile: Visuals on bottom, Text on top */
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+    z-index: 2; /* Sit above the fade overlay */
+    padding-bottom: 60px;
+}
+
+/* Hero Text */
+.hero-text {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid var(--royal-gold);
+    border-radius: 50px;
+    color: var(--royal-gold);
+    font-family: "Comfortaa", sans-serif;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.hero-text h1 {
+    font-family: "Vollkorn", serif;
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--royal-white);
+}
+
+.text-gold {
+    color: var(--royal-gold);
+}
+
+.hero-text p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: var(--royal-gold);
+    color: var(--royal-dark);
+}
+.btn-primary:hover {
+    background: #b07208;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 1px solid var(--royal-white);
+    color: var(--royal-white);
+}
+.btn-outline:hover {
+    border-color: var(--royal-gold);
+    color: var(--royal-gold);
+}
+
+/* =========================================
+   4. THE HERO GRADIENT FADE
+   ========================================= */
+.hero-fade-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%; /* Fades the bottom 30% of the hero */
+    background: linear-gradient(
+        to bottom,
+        var(--royal-dark) 0%,
+        rgba(16, 25, 24, 0.9) 30%,
+        rgba(16, 25, 24, 0.4) 70%,
+        transparent 100%
+    );
+    z-index: 1;
+    pointer-events: none; /* Let clicks pass through */
+}
+
+/* =========================================
+   5. INTERACTIVE IMAGE GRID (The Request)
+   ========================================= */
+.hero-visuals {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-container {
+    position: relative;
+    width: 100%;
+    max-width: 512px;
+    /* Mobile: Let height adapt */
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+    /* On mobile, we use Grid instead of Absolute for better stack */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+}
+
+.card {
+    position: relative; /* Default for mobile */
+    border-radius: 12px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end; /* Text at bottom */
+}
+
+/* Card Content Styling */
+.card-content {
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    transform: translateY(20px); /* Slightly hidden by default */
+    transition: all 0.3s ease;
+}
+
+.card-title {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--royal-gold);
+    margin-bottom: 5px;
+}
+
+.card-description {
+    font-family: "Martel", serif;
+    font-size: 0.75rem;
+    color: white;
+    opacity: 1; /* Visible on mobile */
+    line-height: 1.3;
+}
+
+/* =========================================
+   6. DESKTOP STYLES (The Magic)
+   ========================================= */
+@media screen and (min-width: 992px) {
+    .hero-container {
+        flex-direction: row; /* Side by side */
+        text-align: left;
+        height: 80vh; /* Taller on desktop */
+    }
+
+    .hero-text {
+        text-align: left;
+        padding-right: 50px;
+    }
+    .hero-btns {
+        justify-content: flex-start;
+    }
+    .hero-text h1 {
+        font-size: 4rem;
+    }
+
+    /* --- The Grid Interaction Logic --- */
+
+    .card-container {
+        display: block; /* Reset grid */
+        height: 505px;
+        width: 512px;
+    }
+
+    .card {
+        position: absolute; /* Enable overlap logic */
+        z-index: 1;
+        /* Hide description by default on desktop until hover */
+    }
+
+    .card .card-description {
+        opacity: 0;
+        max-height: 0;
+        transition: 0.3s ease;
+    }
+
+    /* Initial Positions (The Collage Look) */
+    .card-pos-1 {
+        top: 0;
+        left: 0;
+        width: 55%;
+        height: 55%;
+        z-index: 2;
+    }
+    .card-pos-2 {
+        top: 10%;
+        right: 0;
+        width: 40%;
+        height: 45%;
+    }
+    .card-pos-3 {
+        bottom: 0;
+        left: 5%;
+        width: 40%;
+        height: 40%;
+    }
+    .card-pos-4 {
+        bottom: 5%;
+        right: 0;
+        width: 50%;
+        height: 50%;
+        z-index: 2;
+    }
+
+    /* HOVER STATE: The expansion */
+    .card:hover {
+        width: 100% !important;
+        height: 100% !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: auto;
+        bottom: auto;
+        z-index: 10; /* Bring to front */
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .card:hover .card-content {
+        transform: translateY(0);
+        padding-bottom: 2.5rem;
+    }
+
+    .card:hover .card-description {
+        opacity: 1;
+        max-height: 100px;
+    }
+}
+
+/* =========================================
+   SECTION: MANDATE & STATS STACKING
+   ========================================= */
+
+.mandate-section {
+    position: relative;
+    background-color: var(--royal-dark); /* Keeps seamless background */
+    padding: 100px 0;
+    /* Ensure z-index allows nav to sit on top */
+    z-index: 10;
+}
+
+.mandate-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile first: 1 column */
+    gap: 60px;
+}
+
+/* --- COLUMN A: THE STACKING CARDS --- */
+
+.mandate-col-a {
+    display: flex;
+    flex-direction: column;
+    /* This creates the scroll space needed for sticky cards to work */
+    min-height: 100vh;
+}
+
+.section-intro {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-family: "Vollkorn", serif;
+    font-size: 2.5rem;
+    color: var(--royal-white);
+    margin-top: 15px;
+}
+
+.badge-gold {
+    border: 1px solid var(--royal-gold);
+    color: var(--royal-gold);
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* The Card Styling */
+.stack-card {
+    position: sticky; /* THE MAGIC: Makes them stack */
+    background: #1a2625; /* Slightly lighter than body for contrast */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid var(--royal-gold);
+    border-radius: 8px;
+    padding: 40px;
+    margin-bottom: 40px; /* Space between cards in flow */
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5); /* Shadow upward to separate stack */
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+
+    /* Ensure they stack on top of each other */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 300px; /* Fixed height for consistent stacking look */
+}
+
+/* Sticky Top Offsets 
+   We calculate these so they stack like file folders.
+   Nav is approx 90px. We start below that.
+*/
+.card-1 {
+    top: 120px;
+    z-index: 1;
+}
+.card-2 {
+    top: 160px;
+    z-index: 2;
+}
+.card-3 {
+    top: 200px;
+    z-index: 3;
+}
+.card-4 {
+    top: 240px;
+    z-index: 4;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.card-header h3 {
+    font-family: "Comfortaa", sans-serif;
+    color: var(--royal-gold);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.card-header span {
+    font-family: "Vollkorn", serif;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.card-body p {
+    font-family: "Martel", serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+/* --- COLUMN B: THE STATS (Right Side) --- */
+
+.stats-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.stat-number {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--royal-white);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-family: "Martel", serif;
+    font-size: 1rem;
+    color: var(--royal-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-divider {
+    width: 50px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-top: 40px;
+}
+
+/* =========================================
+   DESKTOP LOGIC (The Split Layout)
+   ========================================= */
+@media screen and (min-width: 992px) {
+    .mandate-layout {
+        grid-template-columns: 2fr 1fr; /* 70% - 30% approx */
+        align-items: start; /* Important for sticky behavior */
+    }
+
+    /* Keep stats visible while cards scroll */
+    .mandate-col-b {
+        position: sticky;
+        top: 150px; /* Centers it roughly in viewport */
+        height: fit-content;
+    }
+}
+
+/* =========================================
+   SECTION: OUR VALUES (Bento Grid Redo)
+   ========================================= */
+
+.values-section {
+    padding: 100px 0;
+    background-color: var(--royal-dark);
+    position: relative;
+    z-index: 20; /* Ensure it sits on top of everything */
+}
+
+/* Header Aligned Right */
+.values-header {
+    text-align: right;
+    margin-bottom: 60px;
+    border-right: 4px solid var(--royal-gold);
+    padding-right: 30px;
+}
+
+.values-header h2 {
+    font-family: "Vollkorn", serif;
+    font-size: 3rem;
+    color: var(--royal-white);
+    margin-top: 10px;
+}
+
+/* --- THE GRID --- */
+.values-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile Default: 1 column stack */
+    gap: 20px;
+}
+
+/* CARD BASE STYLES */
+.v-card {
+    background: #151f1e;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px; /* Slightly sharper corners look more "grid" like */
+    padding: 35px;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.v-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--royal-gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* TYPOGRAPHY */
+.v-card h3 {
+    font-family: "Vollkorn", serif;
+    font-size: 2.2rem;
+    color: var(--royal-gold);
+    margin-bottom: 20px;
+}
+
+.v-card h4 {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 1.25rem;
+    color: var(--royal-white);
+    margin-bottom: 15px;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.v-card p {
+    font-family: "Martel", serif;
+    font-size: 1rem;
+    color: #bbb;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* ICONS */
+.v-icon i {
+    font-size: 2.5rem;
+    color: var(--royal-gold);
+    margin-bottom: 20px;
+}
+
+.v-icon-large i {
+    font-size: 3.5rem;
+    color: var(--royal-white);
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* SPECIAL CARD: LAND RECLAIM */
+.card-land .btn {
+    margin-top: auto; /* Pushes button to bottom */
+    align-self: flex-start;
+}
+
+/* SPECIAL CARD: IMAGE */
+.card-image {
+    min-height: 300px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+}
+
+.overlay-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    color: var(--royal-white);
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* =========================================
+   DESKTOP GRID LOGIC (Min-width: 992px)
+   ========================================= */
+@media screen and (min-width: 992px) {
+    .values-grid {
+        /* 3 Columns of equal width */
+        grid-template-columns: repeat(3, 1fr);
+        /* Rows adapt to content size */
+        grid-template-rows: auto auto;
+    }
+
+    /* 1. LAND RECLAIM: Spans 2 columns (Wide) */
+    .card-land {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+    }
+
+    /* 2. IMAGE: Takes the last column on top row */
+    .card-image {
+        grid-column: 3 / 4;
+        grid-row: 1 / 2;
+        min-height: 100%; /* Force it to match Land Card height */
+    }
+
+    /* 3. SMALL CARDS: Fill the bottom row naturally (1 col each) */
+    .card-small {
+        grid-row: 2 / 3;
+        /* The grid will auto-place them in col 1, 2, and 3 */
+    }
+}
+
+/* =========================================
+   SECTION: DONATION
+   ========================================= */
+
+.donate-section {
+    position: relative;
+    background-color: var(--royal-dark);
+    padding: 120px 0;
+    overflow: hidden; /* Clips the huge watermark */
+    z-index: 1;
+}
+
+/* --- 1. THE HUGE WATERMARK HEADING --- */
+.donate-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Vollkorn", serif;
+    font-weight: 700;
+    font-size: 18vw; /* Huge responsive size */
+    color: var(--royal-white);
+    opacity: 0.03; /* Very subtle fade */
+    white-space: nowrap;
+    z-index: -1; /* Behind content */
+    pointer-events: none; /* User can click through it */
+    line-height: 1;
+}
+
+/* --- 2. LAYOUT --- */
+.donate-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: Stacked */
+    gap: 40px;
+    position: relative;
+}
+
+/* Left Column (Label) */
+.donate-label {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--royal-gold);
+    display: inline-block;
+    border-left: 3px solid var(--royal-gold);
+    padding-left: 15px;
+}
+
+/* Right Column (Content) */
+.donate-col-right h2 {
+    font-family: "Vollkorn", serif;
+    font-size: 2.5rem; /* Mobile Size */
+    color: var(--royal-white);
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.donate-desc {
+    font-family: "Martel", serif;
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+/* --- 3. THE BUTTON (Replaces Input) --- */
+.donate-btn-large {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 600px; /* Limits width on large screens */
+    padding: 20px 0;
+    background: transparent;
+    color: var(--royal-white);
+    text-transform: uppercase;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* The "Line" look */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.donate-btn-large i {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+/* Button Hover Effects */
+.donate-btn-large:hover {
+    border-bottom-color: var(--royal-gold);
+    color: var(--royal-gold);
+    padding-left: 10px; /* Subtle slide */
+}
+
+.donate-btn-large:hover i {
+    transform: translateX(10px); /* Arrow moves right */
+}
+
+.donate-fine-print {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: "Martel", serif;
+    font-style: italic;
+}
+
+/* =========================================
+   DESKTOP LOGIC (Side-by-Side)
+   ========================================= */
+@media screen and (min-width: 992px) {
+    .donate-layout {
+        grid-template-columns: 1fr 3fr; /* 1 part label, 3 parts content */
+        align-items: start;
+    }
+
+    .donate-col-right h2 {
+        font-size: 3.5rem; /* Massive heading on desktop */
+    }
+
+    .donate-label {
+        font-size: 1.2rem;
+        margin-top: 15px; /* Aligns with top of H2 */
+    }
+}
+
+/* =========================================
+   SECTION: MEMBERSHIP & DOWNLOAD
+   ========================================= */
+
+.membership-section {
+    padding: 100px 0;
+    background-color: var(--royal-dark); /* Fallback */
+    /* Slightly darker than main bg for contrast */
+}
+
+/* Reusing the Right-Aligned Header Style */
+.section-header-right {
+    text-align: right;
+    margin-bottom: 60px;
+    border-right: 4px solid var(--royal-gold);
+    padding-right: 30px;
+}
+
+.section-header-right h2 {
+    font-family: "Vollkorn", serif;
+    font-size: 3rem;
+    color: var(--royal-white);
+    margin-top: 10px;
+}
+
+/* --- GRID LAYOUT --- */
+.membership-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: Stacked */
+    gap: 60px;
+    align-items: center;
+}
+
+/* --- LEFT: JOIN TEXT (Visual Reference 1) --- */
+.accent-line-wrapper {
+    display: flex;
+    gap: 30px;
+}
+
+.vertical-line-gold {
+    width: 4px;
+    background-color: var(--royal-gold);
+    border-radius: 4px;
+    flex-shrink: 0; /* Prevents line from disappearing */
+}
+
+.join-text h3 {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 2rem;
+    color: var(--royal-white);
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.join-text p {
+    font-family: "Martel", serif;
+    color: #bbb;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.join-text .btn {
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- RIGHT: DOCUMENT CARD (Visual Reference 2) --- */
+.download-wrapper {
+    display: flex;
+    justify-content: center; /* Centers card on mobile */
+}
+
+.doc-card {
+    background-color: #dce3e8; /* Light Card as per reference (Royal White) */
+    color: var(--royal-dark); /* Dark text for contrast */
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(50, 50, 50, 1);
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #000000;
+    justify-content: space-between;
+    min-height: 350px;
+}
+
+.doc-card-body {
+    padding: 40px;
+}
+
+/* The Title Area inside Card */
+.doc-header {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.doc-line {
+    width: 2px;
+    background-color: var(--royal-dark); /* Dark line on light bg */
+}
+
+.doc-title-group h4 {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--royal-dark);
+    margin-bottom: 5px;
+}
+
+.doc-title-group span {
+    font-family: "Martel", serif;
+    font-size: 0.85rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.doc-desc {
+    font-family: "Martel", serif;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* The Download Footer Button */
+.doc-footer-btn {
+    background-color: var(--royal-white);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 700;
+    color: var(--royal-dark);
+    transition: background 0.3s ease;
+}
+
+.doc-footer-btn:hover {
+    background-color: #fff;
+    color: var(--royal-gold);
+}
+
+.doc-footer-btn i {
+    font-size: 1.5rem;
+}
+
+/* =========================================
+   DESKTOP LOGIC
+   ========================================= */
+@media screen and (min-width: 992px) {
+    .membership-grid {
+        grid-template-columns: 1fr 1fr; /* Split 50/50 */
+    }
+}
+
+/* =========================================
+   SECTION: INFINITE TICKER
+   ========================================= */
+
+.ticker-section {
+    background-color: var(--royal-gold);
+    padding: 60px 0;
+    overflow: hidden; /* Hides the text that goes off-screen */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transform: rotate(-2deg); /* Optional: Gives it a slight dynamic tilt */
+
+    margin-top: 50px;
+    margin-bottom: 100px;
+    margin-left: 0;
+    margin-right: 0;
+    border-top: 5px solid var(--royal-white);
+    border-bottom: 5px solid var(--royal-white);
+}
+
+.ticker-wrapper {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.ticker-track {
+    display: flex;
+    white-space: nowrap; /* Forces text to stay on one line */
+    gap: 50px; /* Space between the duplicated strings */
+    width: max-content; /* Ensures div is as wide as the text */
+}
+
+/* TYPOGRAPHY */
+.ticker-track span {
+    font-family: "Vollkorn", serif;
+    font-weight: 900; /* Extra Bold */
+    font-size: 7rem; /* Huge Text */
+    color: var(--royal-dark);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* The Star Icon Styling */
+.ticker-track i {
+    font-size: 2rem;
+    color: var(--royal-white);
+}
+
+/* --- ANIMATIONS --- */
+
+/* 1. Scroll Left (Standard Marquee) */
+.scroll-left {
+    animation: scrollLeft 20s linear infinite;
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    } /* Moves halfway because we duplicated content */
+}
+
+/* 2. Scroll Right (Reverse Marquee) */
+.scroll-right {
+    animation: scrollRight 20s linear infinite;
+}
+
+@keyframes scrollRight {
+    0% {
+        transform: translateX(-50%);
+    } /* Start halfway */
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* --- MOBILE ADJUSTMENTS --- */
+@media screen and (max-width: 768px) {
+    .ticker-section {
+        transform: rotate(0deg); /* Remove tilt on mobile */
+        padding: 40px 0;
+    }
+
+    .ticker-track span {
+        font-size: 2.5rem; /* Smaller text on mobile */
+    }
+}
+
+/* =========================================
+   SECTION: FOOTER
+   ========================================= */
+
+.site-footer {
+    background-color: var(--royal-dark);
+    color: var(--royal-white);
+    font-family: "Martel", serif;
+    margin-top: 0;
+    position: relative;
+    z-index: 10;
+}
+
+/* --- 1. TOP CONTACT BAR --- */
+.footer-contact-bar {
+    background-color: #1a2625; /* Slightly lighter dark for contrast */
+    padding: 40px 40px;
+    border-radius: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-left: 30px;
+    margin-right: 39px;
+}
+
+.contact-bar-layout {
+    display: flex;
+    flex-wrap: wrap; /* Wraps on mobile */
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-item i {
+    font-size: 2rem;
+    color: var(--royal-gold);
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info span {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.contact-info strong {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 0.95rem;
+    color: var(--royal-white);
+}
+
+/* --- 2. MAIN FOOTER CONTENT --- */
+.footer-main {
+    padding: 80px 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile Default */
+    gap: 40px;
+}
+
+/* Headings */
+.footer-col h3 {
+    font-family: "Comfortaa", sans-serif;
+    color: var(--royal-white); /* Reference image uses purple, we use white/gold */
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+}
+
+/* Col 1: Brand */
+.footer-logo img {
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.brand-col p {
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: var(--royal-white);
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--royal-gold);
+    color: var(--royal-dark);
+}
+
+/* Col 2 & 3: Links */
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #aaa;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+    color: var(--royal-gold);
+    padding-left: 5px;
+}
+
+/* Col 4: Gallery Grid (Replaces Newsletter) */
+.footer-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 Columns */
+    gap: 5px; /* Small gap like Instagram */
+}
+
+.gallery-thumb {
+    aspect-ratio: 1/1; /* Perfect squares */
+    background-size: cover;
+    background-position: center;
+    background-color: #333;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.gallery-thumb:hover {
+    opacity: 0.7;
+}
+
+/* --- 3. BOTTOM BAR --- */
+.footer-bottom {
+    background-color: #0c1211; /* Darkest shade */
+    padding: 25px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bottom-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.legal-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.legal-links a:hover {
+    color: var(--royal-gold);
+}
+
+/* =========================================
+   DESKTOP LOGIC (Min-width: 992px)
+   ========================================= */
+@media screen and (min-width: 992px) {
+    /* Contact Bar in a Row */
+    .contact-bar-layout {
+        flex-wrap: nowrap;
+    }
+
+    /* 4 Column Footer */
+    .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1fr 1.5fr; /* Brand and Gallery wider */
+    }
+
+    /* Bottom Bar Spread */
+    .bottom-layout {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}

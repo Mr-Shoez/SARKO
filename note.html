@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SARKO | Brand Identity & Roadmap</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Martel:wght@200;300;400;600;700;800;900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <link href='https://cdn.boxicons.com/2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        :root {
+            /* Color Palette */
+            --royal-dark: #101918;
+            --royal-gold: #c9830a;
+            --royal-blue: #001F3F;
+            --royal-red: #C10B0B;
+            --royal-green: #126917;
+            --royal-white: #dce3e8;
+            
+            /* Spacing */
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+        }
+
+        /* RESET & BASE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--royal-dark);
+            color: var(--royal-white);
+            font-family: "Martel", serif;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* TYPOGRAPHY MAPPING */
+        h1 {
+            font-family: "Vollkorn", serif;
+            font-weight: 700;
+            color: var(--royal-gold);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.2;
+        }
+
+        h2, h3, h4, h5, h6 {
+            font-family: "Comfortaa", sans-serif;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--royal-white);
+        }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+            max-width: 70ch;
+        }
+
+        /* UTILITIES */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-md);
+        }
+
+        .section {
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid rgba(201, 131, 10, 0.2);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border: 1px solid var(--royal-gold);
+            border-radius: 50px;
+            font-family: "Comfortaa", sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--spacing-sm);
+            color: var(--royal-gold);
+        }
+
+        /* SECTION: ARCHETYPE */
+        .archetype-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--royal-gold);
+            transform: translateY(-5px);
+        }
+
+        .quote-box {
+            border-left: 4px solid var(--royal-gold);
+            padding-left: var(--spacing-md);
+            font-style: italic;
+            margin: var(--spacing-md) 0;
+            background: linear-gradient(90deg, rgba(201,131,10,0.1) 0%, transparent 100%);
+            padding: var(--spacing-md);
+        }
+
+        /* SECTION: COLORS */
+        .color-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .color-swatch {
+            width: 150px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .swatch-display {
+            height: 100px;
+            width: 100%;
+        }
+
+        .swatch-info {
+            padding: 1rem;
+            background: #000;
+            font-family: "Comfortaa", sans-serif;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        /* SECTION: LOGO PREVIEW (Mockups) */
+        .logo-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .logo-box {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed rgba(255,255,255,0.2);
+            position: relative;
+        }
+        
+        .logo-box::after {
+            content: "LOGO IMG";
+            font-family: "Comfortaa";
+            opacity: 0.5;
+        }
+
+        /* SECTION: PERSONAS */
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .persona-card {
+            background: var(--royal-blue);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            border-top: 4px solid var(--royal-gold);
+        }
+
+        .persona-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* SECTION: DOs and DON'Ts */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+        }
+
+        .do-list, .dont-list {
+            padding: var(--spacing-md);
+            border-radius: 8px;
+        }
+
+        .do-list {
+            background: rgba(18, 105, 23, 0.1);
+            border: 1px solid var(--royal-green);
+        }
+
+        .dont-list {
+            background: rgba(193, 11, 11, 0.1);
+            border: 1px solid var(--royal-red);
+        }
+
+        .list-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .list-item i {
+            font-size: 1.5rem;
+            margin-top: 2px;
+        }
+
+        .do-list i { color: var(--royal-green); }
+        .dont-list i { color: var(--royal-red); }
+
+        /* SECTION: ROADMAP */
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .tech-pill {
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-family: "Comfortaa";
+            font-weight: 700;
+        }
+
+        .sitemap ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .sitemap li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sitemap li i { color: var(--royal-gold); }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="section">
+        <span class="badge">Internal Document</span>
+        <h1>SARKO Brand Identity System</h1>
+        <p class="martel-light">Redefining the brand archetype as the <strong>Regal Guardian</strong>. Protecting heritage, land, and dignity.</p>
+    </header>
+
+    <section class="section">
+        <h2>01. Core Strategy</h2>
+        <div class="archetype-grid">
+            <div class="card">
+                <h3>The Promise</h3>
+                <p>To protect the heritage, land, and dignity of the African nation against the erosion of modernity and corruption.</p>
+            </div>
+            <div class="card">
+                <h3>Personality</h3>
+                <p>Authoritative, Dignified, Unyielding, yet Paternal/Maternal (caring).</p>
+            </div>
+            <div class="card">
+                <h3>Tone of Voice</h3>
+                <p><strong>"Statutory yet Soulful."</strong> A mix of Royal Decree and Freedom Fighter’s manifesto.</p>
+            </div>
+        </div>
+
+        <div class="quote-box">
+            <div style="margin-bottom: 1rem; opacity: 0.6;">AVOID: "We are trying to fix the health system."</div>
+            <div style="font-size: 1.2rem; color: var(--royal-gold); font-family: 'Vollkorn', serif;">ADOPT: "We Command the Restoration of Our People's Health and Dignity."</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>02. Visual Identity System (VIS)</h2>
+        <p>Based on semiotic analysis of royalty and African heritage.</p>
+        
+        <h4 style="margin-top: 2rem;">Color Palette</h4>
+        <div class="color-grid">
+            <div class="color-swatch">
+                <div class="swatch-display" style="background: var(--royal-dark);"></div>
+                <div class="swatch-info">Dark<br>#101918</div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch-display" style="background: var(--royal-gold);"></div>
+                <div class="swatch-info">Gold<br>#c9830a</div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch-display" style="background: var(--royal-blue);"></div>
+                <div class="swatch-info">Blue<br>#001F3F</div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch-display" style="background: var(--royal-red);"></div>
+                <div class="swatch-info">Red<br>#C10B0B</div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch-display" style="background: var(--royal-green);"></div>
+                <div class="swatch-info">Green<br>#126917</div>
+            </div>
+            <div class="color-swatch">
+                <div class="swatch-display" style="background: var(--royal-white);"></div>
+                <div class="swatch-info">White<br>#dce3e8</div>
+            </div>
+        </div>
+
+        <h4 style="margin-top: 2rem;">Typography Hierarchy</h4>
+        <div class="card">
+            <h1 style="border-bottom: 1px solid #333; padding-bottom:10px;">Heading 1 (Vollkorn)</h1>
+            <h2>Heading 2 (Comfortaa)</h2>
+            <h3>Heading 3 (Comfortaa)</h3>
+            <p class="martel-regular"><strong>Body Text (Martel Regular):</strong> This is how the standard paragraph text will look. It is a serif font that provides readability and a sense of tradition.</p>
+            <p class="martel-light"><em>Caption Text (Martel Light): For subtitles and nuanced text.</em></p>
+        </div>
+
+        <h4 style="margin-top: 2rem;">Logo Application</h4>
+        <div class="logo-preview-grid">
+            <div>
+                <p style="font-size: 0.8rem; opacity: 0.7; margin-bottom: 5px;">On Royal White</p>
+                <div class="logo-box" style="background: var(--royal-white); color: var(--royal-dark);">
+                    <i class='bx bxs-crown' style="font-size: 3rem; color: var(--royal-dark);"></i>
+                </div>
+            </div>
+            <div>
+                <p style="font-size: 0.8rem; opacity: 0.7; margin-bottom: 5px;">Transparent / No BG</p>
+                <div class="logo-box" style="background: transparent; border: 1px solid #333;">
+                    <i class='bx bxs-crown' style="font-size: 3rem; color: var(--royal-gold);"></i>
+                </div>
+            </div>
+            <div>
+                <p style="font-size: 0.8rem; opacity: 0.7; margin-bottom: 5px;">On Royal Dark</p>
+                <div class="logo-box" style="background: var(--royal-dark); border: 1px solid var(--royal-gold);">
+                    <i class='bx bxs-crown' style="font-size: 3rem; color: var(--royal-white);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>03. Target Personas</h2>
+        <div class="persona-grid">
+            <div class="persona-card">
+                <h3><i class='bx bxs-user-voice'></i> The Disenfranchised Traditionalist</h3>
+                <p><strong>Profile:</strong> Male/Female, 45+, rural.</p>
+                <p><strong>Motivation:</strong> Feels culture is sold out. Wants return to order and respect.</p>
+            </div>
+            <div class="persona-card">
+                <h3><i class='bx bxs-map'></i> The Land Claimant</h3>
+                <p><strong>Profile:</strong> Any age.</p>
+                <p><strong>Motivation:</strong> Frustrated by slow land reform. Wants aggressive action.</p>
+            </div>
+            <div class="persona-card">
+                <h3><i class='bx bxs-shield-alt-2'></i> The Vulnerable Mother</h3>
+                <p><strong>Profile:</strong> Female, 25-50.</p>
+                <p><strong>Motivation:</strong> Terrified of GBV. Drawn to strict enforcement for protection.</p>
+            </div>
+            <div class="persona-card">
+                <h3><i class='bx bxs-hard-hat'></i> The Unemployed Youth</h3>
+                <p><strong>Profile:</strong> Male, 18-35 (Secondary).</p>
+                <p><strong>Motivation:</strong> Looking for tangible skills training (carpentry, sewing).</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>04. Execution Guidelines</h2>
+        <div class="comparison-grid">
+            <div class="do-list">
+                <h3 style="color: var(--royal-green);">DO</h3>
+                <div class="list-item">
+                    <i class='bx bxs-check-circle'></i>
+                    <p>Highlight specific successes in Maluti-a-Phofung as proof of capability.</p>
+                </div>
+                <div class="list-item">
+                    <i class='bx bxs-check-circle'></i>
+                    <p>Use titles of traditional leaders (King, Queen, Inkosi) with strict protocol.</p>
+                </div>
+            </div>
+
+            <div class="dont-list">
+                <h3 style="color: var(--royal-red);">DON'T</h3>
+                <div class="list-item">
+                    <i class='bx bxs-x-circle'></i>
+                    <p>Use "WhatsApp quality" images. Use stylized graphics or B&W if hi-res is unavailable.</p>
+                </div>
+                <div class="list-item">
+                    <i class='bx bxs-x-circle'></i>
+                    <p>Emphasize "Kailasa" connection on the homepage. Keep international partners vague unless benefits are tangible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="border-bottom: none;">
+        <h2>05. Web Development Roadmap</h2>
+        <p>Goal: Transform <strong>sarko.org.za</strong> from a static brochure into a Political Mobilization Platform.</p>
+        
+        <div style="margin-top: 1.5rem;">
+            <h4>Tech Stack</h4>
+            <div class="tech-stack">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3</span>
+                <span class="tech-pill">JavaScript</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+            <h4>Information Architecture (Sitemap)</h4>
+            <div class="sitemap card">
+                <ul>
+                    <li><i class='bx bxs-home'></i> <strong>Home:</strong> The Storefront</li>
+                    <li><i class='bx bxs-landmark'></i> <strong>Our Kingdom:</strong> About Us, Leadership, History</li>
+                    <li><i class='bx bxs-scroll'></i> <strong>The Mandate:</strong> Manifesto, Values, Policies</li>
+                    <li><i class='bx bxs-news'></i> <strong>News & Events:</strong> Press Releases, Rallies, Gallery</li>
+                    <li><i class='bx bxs-user-plus'></i> <strong>Get Involved:</strong> Membership, Volunteer</li>
+                    <li><i class='bx bxs-donate-heart'></i> <strong>Donate:</strong> Secure Gateway</li>
+                    <li><i class='bx bxs-map-pin'></i> <strong>Contact:</strong> Branch Locator</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+            <h4>Performance Strategy</h4>
+            <p><i class='bx bxs-bolt'></i> <strong>Images:</strong> Auto-convert to WebP.</p>
+            <p><i class='bx bxs-data'></i> <strong>Caching:</strong> LiteSpeed or WP Rocket.</p>
+            <p><i class='bx bxs-cloud-shield'></i> <strong>CDN:</strong> Cloudflare (DDoS protection).</p>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>

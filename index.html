@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SARKO | Land and Dignity</title>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Martel:wght@200;300;400;600;700&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap"
+            rel="stylesheet" />
+
+        <!-- Icons -->
+        <link href="https://cdn.boxicons.com/2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <!-- NAVIGATION HEADER -->
+        <header class="header-main">
+            <nav class="sarko-nav">
+                <div class="container nav-wrapper">
+                    <!-- 1. LOGO SECTION -->
+                    <a href="#" class="brand-logo">
+                        <!-- Using FontIcon as placeholder, replace with <img> if needed -->
+                        <img src="images/logos/sarko logo no background.png" alt="SARKO Logo" class="logo-img" />
+                    </a>
+
+                    <!-- 2. MOBILE TOGGLE BUTTON (Hamburger) -->
+                    <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+                        <i class="bx bx-menu"></i>
+                    </button>
+
+                    <!-- 3. NAVIGATION LINKS -->
+                    <div class="nav-content" id="nav-content">
+                        <ul class="nav-list">
+                            <!-- Standard Link -->
+                            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+
+                            <!-- Standard Link -->
+                            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+
+                            <!-- Dropdown Menu (The Kingdom) -->
+                            <li class="nav-item has-dropdown">
+                                <button class="nav-link dropdown-btn">
+                                    The Kingdom <i class="bx bx-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Leadership Structure</a></li>
+                                    <li><a href="#">History & Heritage</a></li>
+                                    <li><a href="#">Maluti-a-Phofung Success</a></li>
+                                    <li><a href="#">Official Protocols</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- Mega Menu (The Mandate) -->
+                            <li class="nav-item has-mega">
+                                <button class="nav-link dropdown-btn">
+                                    The Mandate <i class="bx bx-chevron-down"></i>
+                                </button>
+
+                                <!-- Mega Menu Container -->
+                                <div class="mega-menu">
+                                    <div class="mega-content">
+                                        <!-- Column 1: Image/Featured -->
+                                        <div class="mega-column featured-col">
+                                            <div class="mega-image-box">
+                                                <i class="bx bxs-landscape"></i>
+                                            </div>
+                                            <h3>Restoring Dignity</h3>
+                                            <p>Our promise to protect the heritage and land of the African nation.</p>
+                                        </div>
+
+                                        <!-- Column 2: Policies -->
+                                        <div class="mega-column">
+                                            <h3><i class="bx bxs-scroll"></i> Key Policies</h3>
+                                            <ul>
+                                                <li><a href="#">Land Reclamation</a></li>
+                                                <li><a href="#">Traditional Governance</a></li>
+                                                <li><a href="#">Health Restoration</a></li>
+                                                <li><a href="#">Economic Freedom</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Column 3: Get Involved -->
+                                        <div class="mega-column">
+                                            <h3><i class="bx bxs-user-voice"></i> Get Involved</h3>
+                                            <ul>
+                                                <li><a href="#">Become a Member</a></li>
+                                                <li><a href="#">Volunteer</a></li>
+                                                <li><a href="#">Donate</a></li>
+                                                <li><a href="#">Find a Branch</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Column 4: News -->
+                                        <div class="mega-column">
+                                            <h3><i class="bx bxs-news"></i> Latest News</h3>
+                                            <ul>
+                                                <li><a href="#">Press Releases</a></li>
+                                                <li><a href="#">Upcoming Rallies</a></li>
+                                                <li><a href="#">Gallery</a></li>
+                                                <li><a href="#">Contact Us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-- Standard Link (Feedback/Contact) -->
+                            <li class="nav-item"><a href="#" class="nav-link">Feedback</a></li>
+                        </ul>
+
+                        <!-- Mobile Close Button -->
+                        <button class="mobile-close" id="mobile-close">
+                            <i class="bx bx-x"></i>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- 2. HERO SECTION -->
+        <section class="hero-section">
+            <div class="container hero-container">
+                <!-- LEFT: TEXT CONTENT -->
+                <div class="hero-text">
+                    <span class="hero-badge">Land and Dignity</span>
+                    <h1>
+                        The Regal <br />
+                        <span class="text-gold">Guardian</span>
+                    </h1>
+                    <p>
+                        Restoring the heritage, land, and dignity of the African nation. We stand as the shield against
+                        the erosion of our values.
+                    </p>
+
+                    <div class="hero-btns">
+                        <a href="#" class="btn btn-primary">Join the Movement</a>
+                        <a href="#" class="btn btn-outline">Read Mandate</a>
+                    </div>
+                </div>
+
+                <!-- RIGHT: CARD GRID (Interactive) -->
+                <div class="hero-visuals">
+                    <div class="card-container">
+                        <!-- Card 1: Top Left -->
+                        <div
+                            class="card card-pos-1"
+                            style="
+                                background-image: url(&quot;https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=2072&auto=format&fit=crop&quot;);
+                            ">
+                            <div class="card-content">
+                                <div class="card-title">Heritage</div>
+                                <div class="card-description">Preserving our royal roots and traditions.</div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Top Right -->
+                        <div
+                            class="card card-pos-2"
+                            style="
+                                background-image: url(&quot;https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=2071&auto=format&fit=crop&quot;);
+                            ">
+                            <div class="card-content">
+                                <div class="card-title">Land</div>
+                                <div class="card-description">Reclaiming what belongs to the people.</div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Bottom Left -->
+                        <div
+                            class="card card-pos-3"
+                            style="
+                                background-image: url(&quot;https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?q=80&w=2067&auto=format&fit=crop&quot;);
+                            ">
+                            <div class="card-content">
+                                <div class="card-title">Dignity</div>
+                                <div class="card-description">Restoring pride in our community.</div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Bottom Right -->
+                        <div
+                            class="card card-pos-4"
+                            style="
+                                background-image: url(&quot;https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=2076&auto=format&fit=crop&quot;);
+                            ">
+                            <div class="card-content">
+                                <div class="card-title">Future</div>
+                                <div class="card-description">Building a legacy for the youth.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Gradient Overlay to blend into the next section -->
+            <div class="hero-fade-bottom"></div>
+        </section>
+
+        <!-- ============================================ -->
+        <!--           SECTION: THE MANDATE               -->
+        <!-- ============================================ -->
+        <section class="mandate-section">
+            <div class="container mandate-layout">
+                <!-- COLUMN A: Stacking Tabs (70%) -->
+                <div class="mandate-col-a">
+                    <div class="section-intro">
+                        <span class="badge-gold">The Blueprint</span>
+                        <h2 class="section-title">Restoring the Kingdom</h2>
+                    </div>
+
+                    <!-- Card 1: Who We Are -->
+                    <div class="stack-card card-1">
+                        <div class="card-header">
+                            <span>01.</span>
+                            <h3>Who We Are</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                We are the guardians of heritage. SARKO is not merely an organization; it is a movement
+                                dedicated to the preservation of land, dignity, and the royal lineage of the African
+                                people. We stand as a bridge between ancient wisdom and modern governance.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Our Mission -->
+                    <div class="stack-card card-2">
+                        <div class="card-header">
+                            <span>02.</span>
+                            <h3>Our Mission</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                To reclaim what was lost. Our mission is to legally and socially restore the
+                                custodianship of the land to its rightful heirs, ensuring economic freedom and social
+                                justice through traditional leadership structures that have stood the test of time.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Our Vision -->
+                    <div class="stack-card card-3">
+                        <div class="card-header">
+                            <span>03.</span>
+                            <h3>Our Vision</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                A sovereign, self-sustaining society where traditional values dictate our future. We
+                                envision a world where the dignity of the African child is protected by the shield of
+                                their ancestors and the spear of economic independence.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Our Story -->
+                    <div class="stack-card card-4">
+                        <div class="card-header">
+                            <span>04.</span>
+                            <h3>Our Story</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Forged in the fires of Maluti-a-Phofung, our story began with a refusal to accept decay.
+                                From a small council of elders to a nationwide movement, we have grown through the
+                                realization that true power lies in unity and the soil beneath our feet.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMN B: Statistics (30%) -->
+                <div class="mandate-col-b">
+                    <div class="stats-wrapper">
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Royal Heritage</div>
+                            <div class="stat-divider"></div>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Regions Reclaimed</div>
+                            <div class="stat-divider"></div>
+                        </div>
+
+                        <div class="stat-item">
+                            <div class="stat-number">20</div>
+                            <div class="stat-label">Years of Struggle</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!--            SECTION: OUR VALUES               -->
+        <!-- ============================================ -->
+        <section class="values-section">
+            <div class="container">
+                <!-- Section Header (Aligned Right as requested) -->
+                <div class="values-header">
+                    <span class="badge-gold">Core Principles</span>
+                    <h2>Pillars of <span class="text-gold">Dignity</span></h2>
+                </div>
+
+                <!-- THE BENTO GRID -->
+                <div class="values-grid">
+                    <!-- 1. LAND RECLAIM (Takes 2 Columns) -->
+                    <div class="v-card card-land">
+                        <div class="card-content-top">
+                            <div class="v-icon-large">
+                                <i class="bx bxs-landscape"></i>
+                            </div>
+                            <h3>Land Reclaim</h3>
+                        </div>
+
+                        <div class="card-text-body">
+                            <p>
+                                Poverty alleviation through land redistribution. Our mission is to ensure that our
+                                communities live off their land and that mineral resources benefit the people directly.
+                            </p>
+                            <p>
+                                Whether agricultural or mining, the wealth of the soil must return to the communities
+                                living on it. We safeguard the mineral resources of the country for the future.
+                            </p>
+                        </div>
+
+                        <a href="#" class="btn btn-primary">Read Land Policy</a>
+                    </div>
+
+                    <!-- 2. IMAGE BOX (Takes 1 Column) -->
+                    <div
+                        class="v-card card-image"
+                        style="
+                            background-image: url(&quot;https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=2070&auto=format&fit=crop&quot;);
+                        ">
+                        <div class="overlay-text">
+                            <span>Restoring the Soil</span>
+                        </div>
+                    </div>
+
+                    <!-- 3. SHELTER (1 Column) -->
+                    <div class="v-card card-small">
+                        <div class="v-icon">
+                            <i class="bx bxs-home-heart"></i>
+                        </div>
+                        <h4>Shelter & Security</h4>
+                        <p>
+                            Providing security for housing, jobs, and lives. Protecting women and children through
+                            outreach and strict law enforcement.
+                        </p>
+                    </div>
+
+                    <!-- 4. HEALTH (1 Column) -->
+                    <div class="v-card card-small">
+                        <div class="v-icon">
+                            <i class="bx bxs-heart-circle"></i>
+                        </div>
+                        <h4>Health Restoration</h4>
+                        <p>
+                            Revitalizing the collapsing system by incentivizing young professionals and introducing
+                            health careers at a school level.
+                        </p>
+                    </div>
+
+                    <!-- 5. EDUCATION (1 Column) -->
+                    <div class="v-card card-small">
+                        <div class="v-icon">
+                            <i class="bx bxs-book-reader"></i>
+                        </div>
+                        <h4>Education & Skills</h4>
+                        <p>
+                            Skills workshops in gardening, sewing, and carpentry. Promoting spiritual values while
+                            upgrading the system for free education.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!--           SECTION: DONATION                  -->
+        <!-- ============================================ -->
+        <section class="donate-section">
+            <!-- THE HUGE WATERMARK HEADING -->
+            <div class="donate-watermark">CONTRIBUTE</div>
+
+            <div class="container">
+                <div class="donate-layout">
+                    <!-- Left Column: Label -->
+                    <div class="donate-col-left">
+                        <span class="donate-label">Support the Vision</span>
+                    </div>
+
+                    <!-- Right Column: Content & Button -->
+                    <div class="donate-col-right">
+                        <h2>Empower the Restoration of <br /><span class="text-gold">Dignity.</span></h2>
+
+                        <p class="donate-desc">
+                            The fight for land, heritage, and economic freedom requires resources. Your contribution is
+                            not just a donation; it is an investment in the future of the African child.
+                        </p>
+
+                        <!-- THE DONATION BUTTON (Replaces Input) -->
+                        <a href="#" class="donate-btn-large">
+                            <span>Make a Contribution</span>
+                            <i class="bx bx-right-arrow-alt"></i>
+                        </a>
+
+                        <p class="donate-fine-print">
+                            *All donations are transparently audited and go directly to community development programs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============================================ -->
+        <!--       SECTION: MEMBERSHIP & DOCUMENTS        -->
+        <!-- ============================================ -->
+        <section class="membership-section">
+            <div class="container">
+                <!-- HEADER (Aligned Right) -->
+                <div class="section-header-right">
+                    <span class="badge-gold">Official Documents</span>
+                    <h2>Join the <span class="text-gold">Legion</span></h2>
+                </div>
+
+                <div class="membership-grid">
+                    <!-- LEFT COLUMN: JOIN ACTION (Text + Line) -->
+                    <div class="join-content">
+                        <div class="accent-line-wrapper">
+                            <div class="vertical-line-gold"></div>
+                            <div class="join-text">
+                                <h3>Secure Your Legacy. <br />Become a Guardian.</h3>
+                                <p>
+                                    The strength of the Kingdom lies in its people. By becoming a registered member of
+                                    SARKO, you take a stand for land restitution, cultural preservation, and the
+                                    protection of our dignity.
+                                </p>
+                                <p>Don't just watch history unfold—write it with us.</p>
+                                <a href="#" class="btn btn-primary">
+                                    Become a Member <i class="bx bx-user-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: DOWNLOAD CARD (Constitution) -->
+                    <div class="download-wrapper">
+                        <!-- The Card -->
+                        <div class="doc-card">
+                            <div class="doc-card-body">
+                                <!-- Card Title with thin line -->
+                                <div class="doc-header">
+                                    <div class="doc-line"></div>
+                                    <div class="doc-title-group">
+                                        <h4>SARKO Constitution</h4>
+                                        <span>Official Mandate • V 2.0</span>
+                                    </div>
+                                </div>
+
+                                <p class="doc-desc">
+                                    The governing principles of our movement. This document outlines our structure, our
+                                    policies on land reform, and our code of conduct for all members.
+                                </p>
+                            </div>
+
+                            <!-- Download Footer Button -->
+                            <a href="#" class="doc-footer-btn">
+                                <span>Download PDF</span>
+                                <i class="bx bxs-download"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!--           SECTION: VOTE TICKER               -->
+        <!-- ============================================ -->
+        <section class="ticker-section">
+            <!-- ROW 1: Moving Left to Right -->
+            <div class="ticker-wrapper">
+                <div class="ticker-track scroll-right">
+                    <span
+                        >VOTE SARKO <i class="bx bxs-star"></i> LAND AND DIGNITY <i class="bx bxs-star"></i> VOTE SARKO
+                        <i class="bx bxs-star"></i> LAND AND DIGNITY <i class="bx bxs-star"></i
+                    ></span>
+                    <!-- Duplicate for seamless loop -->
+                    <span
+                        >VOTE SARKO <i class="bx bxs-star"></i> LAND AND DIGNITY <i class="bx bxs-star"></i> VOTE SARKO
+                        <i class="bx bxs-star"></i> LAND AND DIGNITY <i class="bx bxs-star"></i
+                    ></span>
+                </div>
+            </div>
+
+            <!-- ROW 2: Moving Right to Left -->
+            <div class="ticker-wrapper">
+                <div class="ticker-track scroll-left">
+                    <span
+                        >VOTE FOR CHANGE <i class="bx bxs-star"></i> VOTE FOR REFORM <i class="bx bxs-star"></i> RESTORE
+                        THE KINGDOM <i class="bx bxs-star"></i
+                    ></span>
+                    <!-- Duplicate for seamless loop -->
+                    <span
+                        >VOTE FOR CHANGE <i class="bx bxs-star"></i> VOTE FOR REFORM <i class="bx bxs-star"></i> RESTORE
+                        THE KINGDOM <i class="bx bxs-star"></i
+                    ></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!--               SECTION: FOOTER                -->
+        <!-- ============================================ -->
+        <footer class="site-footer">
+            <!-- 1. TOP CONTACT BAR -->
+            <div class="footer-contact-bar">
+                <div class="container contact-bar-layout">
+                    <div class="contact-item">
+                        <i class="bx bxs-phone"></i>
+                        <div class="contact-info">
+                            <span>Call Us</span>
+                            <strong>+27 11 123 4567</strong>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="bx bxs-envelope"></i>
+                        <div class="contact-info">
+                            <span>Email Us</span>
+                            <strong>info@sarko.org.za</strong>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="bx bxs-map"></i>
+                        <div class="contact-info">
+                            <span>Visit Us</span>
+                            <strong>Maluti-a-Phofung, FS</strong>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="bx bxs-time"></i>
+                        <div class="contact-info">
+                            <span>Open Hours</span>
+                            <strong>Mon - Fri: 08:00 - 17:00</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. MAIN FOOTER CONTENT -->
+            <div class="container footer-main">
+                <div class="footer-grid">
+                    <!-- COLUMN 1: BRAND & LOGO -->
+                    <div class="footer-col brand-col">
+                        <!-- LOGO REPLACEMENT -->
+                        <a href="#" class="footer-logo">
+                            <img src="images/logos/sarko logo no background.png" alt="SARKO Logo" />
+                        </a>
+                        <p>
+                            Restoring the heritage, land, and dignity of the African nation. We stand as the shield
+                            against the erosion of our values.
+                        </p>
+                        <div class="social-links">
+                            <a href="#"><i class="bx bxl-facebook"></i></a>
+                            <a href="#"><i class="bx bxl-twitter"></i></a>
+                            <a href="#"><i class="bx bxl-instagram"></i></a>
+                            <a href="#"><i class="bx bxl-youtube"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- COLUMN 2: QUICK LINKS -->
+                    <div class="footer-col">
+                        <h3>Our Kingdom</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Leadership</a></li>
+                            <li><a href="#">The Mandate</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- COLUMN 3: SERVICES / FOCUS -->
+                    <div class="footer-col">
+                        <h3>Key Focus</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Land Reclamation</a></li>
+                            <li><a href="#">Community Security</a></li>
+                            <li><a href="#">Health Systems</a></li>
+                            <li><a href="#">Education & Skills</a></li>
+                            <li><a href="#">Cultural Heritage</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- COLUMN 4: GALLERY (Replaces Newsletter) -->
+                    <div class="footer-col">
+                        <h3>Gallery</h3>
+                        <p style="margin-bottom: 15px; font-size: 0.9rem">Follow our journey: @sarko_sa</p>
+
+                        <div class="footer-gallery-grid">
+                            <!-- 8 Images Grid -->
+                            <div
+                                class="gallery-thumb"
+                                style="
+                                    background-image: url(&quot;https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=150&auto=format&fit=crop&quot;);
+                                "></div>
+                            <div
+                                class="gallery-thumb"
+                                style="
+                                    background-image: url(&quot;https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=150&auto=format&fit=crop&quot;);
+                                "></div>
+                            <div
+                                class="gallery-thumb"
+                                style="
+                                    background-image: url(&quot;https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?q=80&w=150&auto=format&fit=crop&quot;);
+                                "></div>
+                            <div
+                                class="gallery-thumb"
+                                style="
+                                    background-image: url(&quot;https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=150&auto=format&fit=crop&quot;);
+                                "></div>
+                            <div
+                                class="gallery-thumb"
+                                style="
+                                    background-image: url(&quot;https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=150&auto=format&fit=crop&quot;);
+                                "></div>
+                            <div
+                                class="gallery-thumb"
+                                style="
+                                    background-image: url(&quot;https://images.unsplash.com/photo-1501250987900-1d531879d056?q=80&w=150&auto=format&fit=crop&quot;);
+                                "></div>
+                            <div
+                                class="gallery-thumb"
+                                style="
+                                    background-image: url(&quot;https://images.unsplash.com/photo-1529338296731-c4280a44fc4e?q=80&w=150&auto=format&fit=crop&quot;);
+                                "></div>
+                            <div
+                                class="gallery-thumb"
+                                style="
+                                    background-image: url(&quot;https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=150&auto=format&fit=crop&quot;);
+                                "></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. BOTTOM COPYRIGHT BAR -->
+            <div class="footer-bottom">
+                <div class="container bottom-layout">
+                    <div class="copyright-text">&copy; 2024 SARKO. All Rights Reserved. Land and Dignity.</div>
+                    <div class="legal-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Use</a>
+                        <a href="#">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
