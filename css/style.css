@@ -16,11 +16,9 @@
     box-sizing: border-box;
 }
 
+/* In style.css, around line 18 */
+
 body {
-    /* The Background Image for the whole page (or specifically the section after hero) */
-    background: url("https://images.unsplash.com/photo-1621255474706-90a18eb7be4b?q=80&w=1935&auto=format&fit=crop")
-        no-repeat center center fixed;
-    background-size: cover;
     background-color: var(--royal-dark); /* Fallback */
     color: var(--royal-white);
     font-family: "Martel", serif;
@@ -43,7 +41,7 @@ button {
 
 /* Logo Image Styling */
 .logo-img {
-    height: 60px; /* Adjust based on your actual logo file */
+    height: 80px; /* Adjust based on your actual logo file */
     width: auto;
     object-fit: contain;
 }
@@ -495,7 +493,7 @@ button {
 }
 
 /* =========================================
-   5. INTERACTIVE IMAGE GRID (The Request)
+   5. INTERACTIVE IMAGE GRID (Mobile Base)
    ========================================= */
 .hero-visuals {
     flex: 1;
@@ -557,94 +555,137 @@ button {
 }
 
 /* =========================================
-   6. DESKTOP STYLES (The Magic)
+   DESKTOP STYLES (The Magic) - FINAL VERSION
    ========================================= */
 @media screen and (min-width: 992px) {
+    /* --- LAYOUT FIXES --- */
     .hero-container {
-        flex-direction: row; /* Side by side */
+        flex-direction: row;
         text-align: left;
-        height: 80vh; /* Taller on desktop */
+        height: 80vh;
     }
 
     .hero-text {
         text-align: left;
         padding-right: 50px;
     }
+
     .hero-btns {
         justify-content: flex-start;
     }
+
     .hero-text h1 {
         font-size: 4rem;
     }
 
-    /* --- The Grid Interaction Logic --- */
-
+    /* --- THE INTERACTIVE GRID --- */
     .card-container {
-        display: block; /* Reset grid */
-        height: 505px;
-        width: 512px;
+        display: block;
+        position: relative;
+        height: 500px;
+        width: 100%;
+        max-width: 600px;
+        transform: translateZ(0); /* Promotes to its own rendering layer */
     }
 
     .card {
-        position: absolute; /* Enable overlap logic */
+        position: absolute;
+        border-radius: 12px;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+        display: flex;
+        align-items: flex-end;
+
+        /* HARDWARE ACCELERATION (Anti-Flicker Insurance) */
+        transform: translateZ(0);
+
+        /* DEFAULT STATE */
         z-index: 1;
-        /* Hide description by default on desktop until hover */
+
+        /* Explicit transitions are smoother than 'all' */
+        transition:
+            top 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+            left 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+            width 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+            height 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+            box-shadow 0.5s ease,
+            z-index 0s linear 0.5s; /* Delay z-index drop */
+    }
+
+    /* --- HOVER STATE --- */
+    .card:hover {
+        /* EXPANSION COORDINATES */
+        width: 100% !important;
+        height: 100% !important;
+        top: 0% !important;
+        left: 0% !important;
+
+        /* HOVER Z-INDEX */
+        z-index: 50;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+
+        /* Instant Z-Index change on hover */
+        transition:
+            top 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+            left 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+            width 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+            height 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+            box-shadow 0.5s ease,
+            z-index 0s linear 0s;
+    }
+
+    /* --- TEXT REVEAL --- */
+    .card-content {
+        transform: translateY(100%);
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .card:hover .card-content {
+        transform: translateY(0);
+        opacity: 1;
+        transition-delay: 0.2s;
+        padding-bottom: 40px;
     }
 
     .card .card-description {
         opacity: 0;
         max-height: 0;
-        transition: 0.3s ease;
-    }
-
-    /* Initial Positions (The Collage Look) */
-    .card-pos-1 {
-        top: 0;
-        left: 0;
-        width: 55%;
-        height: 55%;
-        z-index: 2;
-    }
-    .card-pos-2 {
-        top: 10%;
-        right: 0;
-        width: 40%;
-        height: 45%;
-    }
-    .card-pos-3 {
-        bottom: 0;
-        left: 5%;
-        width: 40%;
-        height: 40%;
-    }
-    .card-pos-4 {
-        bottom: 5%;
-        right: 0;
-        width: 50%;
-        height: 50%;
-        z-index: 2;
-    }
-
-    /* HOVER STATE: The expansion */
-    .card:hover {
-        width: 100% !important;
-        height: 100% !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: auto;
-        bottom: auto;
-        z-index: 10; /* Bring to front */
-        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .card:hover .card-content {
-        transform: translateY(0);
-        padding-bottom: 2.5rem;
+        transition: 0.3s ease 0.1s;
     }
 
     .card:hover .card-description {
         opacity: 1;
         max-height: 100px;
+    }
+
+    /* --- STANDARDIZED POSITIONS (Top/Left Only) --- */
+    .card-pos-1 {
+        top: 0%;
+        left: 0%;
+        width: 55%;
+        height: 55%;
+    }
+    .card-pos-2 {
+        top: 6%;
+        left: 52%;
+        width: 35%;
+        height: 32%;
+    }
+    .card-pos-3 {
+        top: 60%;
+        left: 5%;
+        width: 40%;
+        height: 40%;
+    }
+    .card-pos-4 {
+        top: 45%;
+        left: 50%;
+        width: 50%;
+        height: 50%;
     }
 }
 
@@ -1045,39 +1086,42 @@ button {
 }
 
 /* --- 3. THE BUTTON (Replaces Input) --- */
+/* --- UPDATED DONATE BUTTON --- */
 .donate-btn-large {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 600px; /* Limits width on large screens */
-    padding: 20px 0;
+    max-width: 600px;
+    padding: 25px 0; /* Bigger touch area */
     background: transparent;
     color: var(--royal-white);
     text-transform: uppercase;
     font-family: "Comfortaa", sans-serif;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.4rem; /* Larger Text */
     border: none;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* The "Line" look */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
     cursor: pointer;
+    text-decoration: none; /* Ensure no underline on text */
 }
 
+/* Force the arrow to be Gold and Large */
 .donate-btn-large i {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    color: var(--royal-gold);
     transition: transform 0.3s ease;
 }
 
-/* Button Hover Effects */
 .donate-btn-large:hover {
     border-bottom-color: var(--royal-gold);
-    color: var(--royal-gold);
-    padding-left: 10px; /* Subtle slide */
+    color: var(--royal-gold); /* Text turns gold */
+    padding-left: 15px;
 }
 
 .donate-btn-large:hover i {
-    transform: translateX(10px); /* Arrow moves right */
+    transform: translateX(15px); /* Arrow moves right */
 }
 
 .donate-fine-print {
@@ -1440,7 +1484,7 @@ button {
 
 /* Col 1: Brand */
 .footer-logo img {
-    height: 50px;
+    height: 150px;
     margin-bottom: 20px;
 }
 
@@ -1456,21 +1500,35 @@ button {
     gap: 15px;
 }
 
+/* --- UPDATED SOCIAL ICONS --- */
 .social-links a {
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.05);
+    width: 45px; /* Slightly larger */
+    height: 45px;
+    background: rgba(255, 255, 255, 0.15); /* More visible background */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Border for definition */
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     color: var(--royal-white);
-    transition: 0.3s;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
 }
 
 .social-links a:hover {
     background: var(--royal-gold);
     color: var(--royal-dark);
+    border-color: var(--royal-gold);
+    transform: translateY(-3px); /* Little pop effect */
+}
+
+.social-links a:hover {
+    background: var(--royal-gold);
+    color: var(--royal-dark);
+}
+
+social-links i {
+    color: var(--royal-white);
 }
 
 /* Col 2 & 3: Links */
@@ -1564,7 +1622,10 @@ button {
 /* The Dark Backdrop */
 .modal-overlay {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(5px);
     z-index: 2000;
@@ -1589,7 +1650,7 @@ button {
     border-radius: 12px;
     padding: 30px;
     position: relative;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     max-height: 90vh; /* Prevent it from being taller than screen */
     overflow-y: auto; /* Scroll if content is too tall */
 }
@@ -1597,7 +1658,8 @@ button {
 /* Close Button */
 .modal-close {
     position: absolute;
-    top: 15px; right: 15px;
+    top: 15px;
+    right: 15px;
     font-size: 1.5rem;
     color: var(--royal-white);
     background: transparent;
@@ -1626,7 +1688,10 @@ button {
 
 .progress-track {
     position: absolute;
-    top: 50%; left: 0; width: 100%; height: 2px;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
     background: #333;
     z-index: 1;
     transform: translateY(-50%);
@@ -1634,7 +1699,10 @@ button {
 
 .progress-fill {
     position: absolute;
-    top: 50%; left: 0; width: 0%; height: 2px;
+    top: 50%;
+    left: 0;
+    width: 0%;
+    height: 2px;
     background: var(--royal-gold);
     z-index: 2;
     transform: translateY(-50%);
@@ -1642,7 +1710,8 @@ button {
 }
 
 .step-dot {
-    width: 30px; height: 30px;
+    width: 30px;
+    height: 30px;
     background: #1a2625;
     border: 2px solid #333;
     border-radius: 50%;
@@ -1678,7 +1747,7 @@ button {
     font-family: "Comfortaa", sans-serif;
     color: var(--royal-white);
     margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 10px;
 }
 
@@ -1705,24 +1774,28 @@ label {
     margin-bottom: 5px;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
     width: 100%;
     padding: 12px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     color: var(--royal-white);
     font-family: "Comfortaa", sans-serif;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
     outline: none;
     border-color: var(--royal-gold);
 }
 
 /* Special Areas: Oath & Bank */
 .oath-box {
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     padding: 15px;
     border-left: 3px solid var(--royal-gold);
     max-height: 200px;
@@ -1761,14 +1834,16 @@ input:focus, select:focus, textarea:focus {
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 20px;
 }
 
 /* =========================================
    THANK YOU MODAL
    ========================================= */
-.text-center { text-align: center; }
+.text-center {
+    text-align: center;
+}
 
 .thank-you-icon i {
     font-size: 5rem;
@@ -1803,7 +1878,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .loader-line::after {
-    content: '';
+    content: "";
     position: absolute;
     left: -100%;
     top: 0;
@@ -1814,13 +1889,23 @@ input:focus, select:focus, textarea:focus {
 }
 
 @keyframes popIn {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 @keyframes loading {
-    0% { left: -100%; }
-    100% { left: 0%; }
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 0%;
+    }
 }
 
 /* =========================================
@@ -1835,7 +1920,7 @@ input:focus, select:focus, textarea:focus {
     border-top: 2px solid var(--royal-gold);
     padding: 20px 0;
     z-index: 9999; /* Highest priority */
-    box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     transition: bottom 0.5s ease;
 }
@@ -1917,5 +2002,172 @@ input:focus, select:focus, textarea:focus {
     .cookie-btns {
         width: 100%;
         justify-content: center;
+    }
+}
+
+/* =========================================
+   RESPONSIVE FIXES (ADD TO BOTTOM OF CSS)
+   ========================================= */
+
+@media screen and (max-width: 991px) {
+    /* 1. Disable Sticky Stacking on Mobile/Tablet to prevent overlap */
+    .mandate-col-a {
+        min-height: auto; /* Remove the huge height needed for scrolling */
+        display: block;
+        padding: 30px;
+    }
+
+    .stack-card {
+        position: relative !important; /* Force normal layout */
+        top: auto !important;
+        left: auto !important;
+        margin-bottom: 30px;
+        height: auto; /* let content dictate height */
+        transform: none !important; /* Stop any transform effects */
+    }
+
+    /* 2. Fix the Stats Section overlap */
+    .mandate-col-b {
+        position: relative;
+        top: auto;
+        margin-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    /* 3. Hero Grid Fallback for Mobile */
+    /* On mobile, we don't want the fancy hover transition because touch has no hover */
+    .hero-visuals {
+        display: block;
+        padding: 20px;
+    }
+
+    .card-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: 400px; /* Fixed height for mobile grid */
+        gap: 10px;
+    }
+
+    .card {
+        position: relative !important; /* Disable absolute positioning on mobile */
+        width: 100% !important;
+        height: 100% !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        z-index: 1 !important;
+    }
+
+    .card:hover {
+        /* Disable the expansion on mobile touches */
+        transform: none;
+        z-index: 1 !important;
+    }
+}
+
+
+/* In style.css, around line 1210 */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(16, 25, 24, 0.7); /* Slightly more transparent */
+    backdrop-filter: blur(8px); /* THE BLUR EFFECT */
+    z-index: 2000;
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}```
+
+Next, paste all of the following new CSS code at the **very bottom** of your `style.css` file. This will style the new exit-intent modal.
+
+```css
+/* =========================================
+   EXIT INTENT MODAL STYLES
+   ========================================= */
+
+.exit-modal-content {
+    max-width: 850px; /* Wider than other modals */
+    width: 90%;
+    padding: 0; /* Remove padding to allow grid to go edge-to-edge */
+    overflow: hidden; /* Hide overflowing corners from grid */
+    border-width: 2px;
+}
+
+.exit-modal-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: stacked */
+    background-color: var(--royal-dark);
+}
+
+.exit-col-left {
+    min-height: 250px;
+    background-image: url("https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=2071&auto=format&fit=crop");
+    background-size: cover;
+    background-position: center;
+    order: 1; /* Image on top on mobile */
+}
+
+.exit-col-right {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    order: 2;
+}
+
+.exit-title {
+    font-family: "Vollkorn", serif;
+    font-size: 2.5rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.exit-col-right p {
+    color: #bbb;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.exit-cta-box {
+    background: #1a2625;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 25px;
+}
+
+.exit-cta-box h4 {
+    font-family: "Comfortaa", sans-serif;
+    font-size: 1.2rem;
+    color: var(--royal-white);
+    margin-bottom: 5px;
+}
+.exit-cta-box p {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+.exit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- DESKTOP LOGIC for Exit Modal --- */
+@media screen and (min-width: 768px) {
+    .exit-modal-grid {
+        grid-template-columns: 2fr 3fr; /* 40% image, 60% text */
+        min-height: 450px;
+    }
+    .exit-col-left {
+        order: 1; /* Image on the left on desktop */
+    }
+    .exit-col-right {
+        order: 2;
     }
 }
