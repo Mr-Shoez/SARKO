@@ -1556,3 +1556,366 @@ button {
         text-align: left;
     }
 }
+
+/* =========================================
+   MEMBERSHIP MODAL (WIZARD)
+   ========================================= */
+
+/* The Dark Backdrop */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.open {
+    display: flex;
+    opacity: 1;
+}
+
+/* The Modal Box */
+.modal-content {
+    background: var(--royal-dark);
+    width: 90%;
+    max-width: 600px;
+    border: 1px solid var(--royal-gold);
+    border-radius: 12px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    max-height: 90vh; /* Prevent it from being taller than screen */
+    overflow-y: auto; /* Scroll if content is too tall */
+}
+
+/* Close Button */
+.modal-close {
+    position: absolute;
+    top: 15px; right: 15px;
+    font-size: 1.5rem;
+    color: var(--royal-white);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Wizard Header & Progress */
+.wizard-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.wizard-header h3 {
+    font-family: "Vollkorn", serif;
+    color: var(--royal-gold);
+    margin-bottom: 20px;
+}
+
+.progress-bar-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px;
+}
+
+.progress-track {
+    position: absolute;
+    top: 50%; left: 0; width: 100%; height: 2px;
+    background: #333;
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+.progress-fill {
+    position: absolute;
+    top: 50%; left: 0; width: 0%; height: 2px;
+    background: var(--royal-gold);
+    z-index: 2;
+    transform: translateY(-50%);
+    transition: width 0.3s ease;
+}
+
+.step-dot {
+    width: 30px; height: 30px;
+    background: #1a2625;
+    border: 2px solid #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    color: #555;
+    font-family: "Comfortaa", sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.step-dot.active {
+    border-color: var(--royal-gold);
+    color: var(--royal-gold);
+    background: var(--royal-dark);
+    box-shadow: 0 0 10px rgba(201, 131, 10, 0.5);
+}
+
+/* Form Steps */
+.form-step {
+    display: none; /* Hidden by default */
+    animation: fadeIn 0.4s ease;
+}
+
+.form-step.active {
+    display: block;
+}
+
+.form-step h4 {
+    font-family: "Comfortaa", sans-serif;
+    color: var(--royal-white);
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+}
+
+/* Input Styling */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.row-group {
+    display: flex;
+    gap: 15px;
+}
+
+.row-group .input-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    font-family: "Martel", serif;
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    color: var(--royal-white);
+    font-family: "Comfortaa", sans-serif;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--royal-gold);
+}
+
+/* Special Areas: Oath & Bank */
+.oath-box {
+    background: rgba(0,0,0,0.3);
+    padding: 15px;
+    border-left: 3px solid var(--royal-gold);
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+    color: #ccc;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.banking-card {
+    background: #126917; /* Using Royal Green for Money context */
+    background: linear-gradient(45deg, #0e4d12, #126917);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.bank-details p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.checkbox-group input {
+    width: auto;
+}
+
+/* Wizard Footer Buttons */
+.wizard-footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+
+/* =========================================
+   THANK YOU MODAL
+   ========================================= */
+.text-center { text-align: center; }
+
+.thank-you-icon i {
+    font-size: 5rem;
+    color: var(--royal-gold);
+    margin-bottom: 20px;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gold-text {
+    font-family: "Vollkorn", serif;
+    color: var(--royal-gold);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.redirect-text {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-top: 20px;
+    font-family: "Comfortaa", sans-serif;
+}
+
+/* Loader Animation Line */
+.loader-line {
+    width: 100%;
+    height: 4px;
+    background: #333;
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.loader-line::after {
+    content: '';
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--royal-gold);
+    animation: loading 3s linear forwards;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes loading {
+    0% { left: -100%; }
+    100% { left: 0%; }
+}
+
+/* =========================================
+   COOKIE CONSENT BANNER
+   ========================================= */
+.cookie-banner {
+    position: fixed;
+    bottom: -100%; /* Hidden below screen initially */
+    left: 0;
+    width: 100%;
+    background-color: rgba(16, 25, 24, 0.95); /* Royal Dark with transparency */
+    border-top: 2px solid var(--royal-gold);
+    padding: 20px 0;
+    z-index: 9999; /* Highest priority */
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    transition: bottom 0.5s ease;
+}
+
+.cookie-banner.show {
+    bottom: 0; /* Slide up */
+}
+
+.cookie-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.cookie-text h4 {
+    font-family: "Vollkorn", serif;
+    color: var(--royal-gold);
+    margin-bottom: 5px;
+}
+
+.cookie-text p {
+    font-family: "Martel", serif;
+    font-size: 0.85rem;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0;
+}
+
+.cookie-text a {
+    color: var(--royal-white);
+    text-decoration: underline;
+}
+
+.cookie-btns {
+    display: flex;
+    gap: 15px;
+}
+
+/* Small Buttons for Cookie Banner */
+.btn-primary-sm {
+    background: var(--royal-gold);
+    color: var(--royal-dark);
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-family: "Comfortaa", sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary-sm:hover {
+    background: #fff;
+}
+
+.btn-outline-sm {
+    background: transparent;
+    color: #ccc;
+    border: 1px solid #555;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-family: "Comfortaa", sans-serif;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-outline-sm:hover {
+    border-color: var(--royal-white);
+    color: var(--royal-white);
+}
+
+/* Mobile Cookie Responsiveness */
+@media screen and (max-width: 768px) {
+    .cookie-layout {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cookie-btns {
+        width: 100%;
+        justify-content: center;
+    }
+}

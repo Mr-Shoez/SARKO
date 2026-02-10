@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SARKO | Construction Pending</title>
+
+        <!-- Fonts (Same as Index) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Martel:wght@200;300;400;600;700&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap"
+            rel="stylesheet" />
+
+        <!-- Icons -->
+        <link href="https://cdn.boxicons.com/2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+        <style>
+            :root {
+                --royal-dark: #101918;
+                --royal-gold: #c9830a;
+                --royal-white: #dce3e8;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: var(--royal-dark);
+                color: var(--royal-white);
+                font-family: "Martel", serif;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                overflow: hidden;
+                background-image: radial-gradient(circle at center, #1a2625 0%, #101918 70%);
+            }
+
+            .container {
+                max-width: 700px;
+                padding: 40px;
+                border: 1px solid rgba(201, 131, 10, 0.3);
+                border-radius: 12px;
+                background: rgba(0, 0, 0, 0.4);
+                backdrop-filter: blur(10px);
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+                animation: fadeIn 0.8s ease-out;
+            }
+
+            /* Icon Animation */
+            .icon-box {
+                font-size: 5rem;
+                color: var(--royal-gold);
+                margin-bottom: 20px;
+                animation: float 3s ease-in-out infinite;
+            }
+
+            h1 {
+                font-family: "Vollkorn", serif;
+                font-size: 2.5rem;
+                color: var(--royal-white);
+                margin-bottom: 10px;
+            }
+
+            h2 {
+                font-family: "Comfortaa", sans-serif;
+                font-size: 1.2rem;
+                color: var(--royal-gold);
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin-bottom: 30px;
+            }
+
+            p {
+                font-size: 1.1rem;
+                line-height: 1.8;
+                color: #ccc;
+                margin-bottom: 20px;
+            }
+
+            .highlight {
+                color: var(--royal-white);
+                font-weight: 700;
+            }
+
+            /* Status Bar */
+            .status-bar {
+                width: 100%;
+                height: 4px;
+                background: #333;
+                margin: 30px 0;
+                border-radius: 2px;
+                position: relative;
+            }
+
+            .status-fill {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 25%; /* Represents Demo Phase */
+                background: var(--royal-gold);
+                box-shadow: 0 0 10px var(--royal-gold);
+            }
+
+            .status-label {
+                font-family: "Comfortaa", sans-serif;
+                font-size: 0.8rem;
+                color: #777;
+                margin-top: -25px;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            /* Button */
+            .btn-home {
+                display: inline-block;
+                margin-top: 20px;
+                padding: 12px 30px;
+                border: 1px solid var(--royal-gold);
+                color: var(--royal-gold);
+                font-family: "Comfortaa", sans-serif;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: 0.3s;
+            }
+
+            .btn-home:hover {
+                background: var(--royal-gold);
+                color: var(--royal-dark);
+            }
+
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-10px);
+                }
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: scale(0.9);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="icon-box">
+                <i class="bx bxs-lock-alt"></i>
+            </div>
+
+            <h1>The Blueprint is Ready</h1>
+            <h2>Awaiting Royal Decree</h2>
+
+            <p>
+                You have discovered a section of the <strong>SARKO Digital Kingdom</strong> that is currently in the
+                design queue.
+            </p>
+
+            <p>
+                This demo serves as a proof of concept. We have poured significant passion and time into crafting this
+                vision. Upon approval and the requisite deposit, we are prepared to commence full construction of this
+                page and the entire ecosystem.
+            </p>
+
+            <p class="highlight">We appreciate the time you have taken to review our proposal.</p>
+
+            <div class="status-bar">
+                <div class="status-fill"></div>
+            </div>
+            <div class="status-label">
+                <span>Demo Phase</span>
+                <span>Development Phase (Pending)</span>
+            </div>
+
+            <a href="index.html" class="btn-home"> <i class="bx bx-left-arrow-alt"></i> Return to Home </a>
+        </div>
+    </body>
+</html>
